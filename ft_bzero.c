@@ -6,14 +6,14 @@
 /*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 02:22:17 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/07/21 03:07:51 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/07/21 03:43:03 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
-	{
+{
 	char	*ptr;
 	size_t	idx;
 
