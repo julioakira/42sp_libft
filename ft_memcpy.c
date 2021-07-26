@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/21 02:22:17 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/07/21 20:38:57 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/07/22 02:17:54 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/07/26 03:37:20 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+// Copies n bytes from src to dst. If dst & src overlap -> undef behaviour
+// Returns the original value of dst
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	ft_memset(s, 0, n);
+	size_t	idx;
+	char	*cpy_dst;
+	char	*cpy_src;
+
+	cpy_dst = (unsigned char *)dst;
+	cpy_src = (unsigned char *)src;
+	idx = 0;
+	while (idx < n)
+	{
+		cpy_dst[idx] = cpy_src[idx];
+		idx++;
+	}
+	return (dst);
 }
