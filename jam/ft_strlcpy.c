@@ -35,8 +35,8 @@ size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 
 void test(int size)
 {
-    char string[] = "Hello there, Venus";
-    char buffer[19];
+    char string[] = "Hello there, Stranger";
+    char buffer[25];
     int r;
 
     r = ft_strlcpy(buffer,string,size);
@@ -49,7 +49,7 @@ void test(int size)
 }
 
 int main(void) {
-    test(19);
+    test(25);
     test(10);
     test(1);
     test(0);
