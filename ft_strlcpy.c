@@ -6,13 +6,13 @@
 /*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 02:40:31 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/07/28 00:57:35 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/07/28 02:45:27 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char * dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	idx;
 	char	*c_dst;
@@ -30,5 +30,5 @@ size_t	ft_strlcpy(char * dst, const char *src, size_t dstsize)
 		}
 		c_dst[idx] = '\0';
 	}
-	return ft_strlen(src);
+	return (ft_strlen(src));
 }
