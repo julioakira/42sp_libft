@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/21 02:22:17 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/07/26 20:47:51 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/07/28 00:53:25 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/07/28 00:57:02 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	ft_memset(s, 0, n);
+
 }
