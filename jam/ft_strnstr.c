@@ -47,10 +47,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t  n_len = ft_strlen(needle);
+	// size_t	h_len = ft_strlen(haystack);
 	char	*c_hst;
 	if (!len || !n_len)
 		return ((char *) haystack);
 	c_hst = ft_strchr(&haystack[len], needle[0]);
+	// Still getting the wrong portion (inverse)
+	printf("portion: %s\n", &haystack[len]);
+	printf("c_hst: %d\n", !c_hst);
 	while (c_hst)
 	{
 		if (!ft_strncmp(c_hst, needle, len))
@@ -64,7 +68,7 @@ int main(void) {
 	char *needle = "not";
 	char *haystack = "hello i am a string with lala";
     printf("my match: %s\n", ft_strnstr(haystack, needle, 2));
-    printf("original match: %s\n", strnstr(haystack, needle, 30));
+    printf("original match: %s\n", strnstr(haystack, needle, 2));
     return 0;
 }
 
