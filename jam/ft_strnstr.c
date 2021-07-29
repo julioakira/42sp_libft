@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -46,21 +47,24 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t  n_len = ft_strlen(needle);
+	char	*c_hst;
 	if (!len || !n_len)
 		return ((char *) haystack);
-	while ((haystack = ft_strchr(haystack, needle[0])))
+	c_hst = ft_strchr(haystack, needle[0]);
+	while (c_hst)
 	{
-		if (!ft_strncmp(haystack, needle, len))
-			return ((char *) haystack);
-		haystack++;
+		if (!ft_strncmp(c_hst, needle, len))
+			return ((char *) c_hst);
+		c_hst++;
 	}
 	return (NULL);
 }
 
 int main(void) {
-	char *searchingFor = "la";
-	char *in = "hello i am a string with lala";
-    printf("found: %s\n", ft_strnstr(in, searchingFor, 5));
+	char *needle = "string";
+	char *haystack = "hello i am a string with lala";
+    printf("my match: %s\n", ft_strnstr(haystack, needle, 2));
+    printf("original match: %s\n", strnstr(haystack, needle, 30));
     return 0;
 }
 
