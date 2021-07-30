@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -9,6 +10,23 @@ size_t	ft_strlen(const char *s)
 	while (s[idx] != '\0')
 		idx++;
 	return (idx);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	idx;
+	unsigned char	*cpy_dst;
+	unsigned char	*cpy_src;
+
+	cpy_dst = (unsigned char *)dst;
+	cpy_src = (unsigned char *)src;
+	idx = 0;
+	while (idx < n)
+	{
+		cpy_dst[idx] = cpy_src[idx];
+		idx++;
+	}
+	return (dst);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -46,29 +64,31 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t  n_len = ft_strlen(needle);
-	// size_t	h_len = ft_strlen(haystack);
-	char	*c_hst;
+	size_t	idx;
+	size_t	n_len;
+
+	n_len = ft_strlen(needle);
 	if (!len || !n_len)
 		return ((char *) haystack);
-	c_hst = ft_strchr(&haystack[len], needle[0]);
-	// Still getting the wrong portion (inverse)
-	printf("portion: %s\n", &haystack[len]);
-	printf("c_hst: %d\n", !c_hst);
-	while (c_hst)
+	idx = 0;
+	while (idx <= len - n_len)
 	{
-		if (!ft_strncmp(c_hst, needle, len))
-			return ((char *) c_hst);
-		c_hst++;
+		if ((*haystack == *needle)
+			&& (!ft_strncmp(haystack, needle, n_len)))
+			return ((char *)haystack);
+		haystack++;
+		idx++;
 	}
 	return (NULL);
 }
 
 int main(void) {
-	char *needle = "not";
+	char *needle = "string";
 	char *haystack = "hello i am a string with lala";
-    printf("my match: %s\n", ft_strnstr(haystack, needle, 2));
-    printf("original match: %s\n", strnstr(haystack, needle, 2));
+    printf("my match: %s\n", ft_strnstr(haystack, needle, 18));
+    printf("original match: %s\n", strnstr(haystack, needle, 18));
+    printf("my match: %s\n", ft_strnstr(haystack, needle, 19));
+    printf("original match: %s\n", strnstr(haystack, needle, 19));
     return 0;
 }
 
