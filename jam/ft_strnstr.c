@@ -75,7 +75,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	{
 		if ((*haystack == *needle)
 			&& (!ft_strncmp(haystack, needle, n_len)))
-			return ((char *)haystack);
+			return ((char *) haystack);
 		haystack++;
 		idx++;
 	}
