@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 01:51:07 by akira             #+#    #+#             */
-/*   Updated: 2021/08/01 02:40:22 by akira            ###   ########.fr       */
+/*   Updated: 2021/08/02 02:54:12 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void *ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
 void *ft_calloc(size_t nmemb, size_t size)
 {
 	void *ptr;
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 	ptr = malloc(nmemb * size);
-	ft_memset(ptr, 0, size);
+	ft_bzero(ptr, size);
 	return (ptr);
 }
 
@@ -59,6 +64,7 @@ void malloc_test(void)
 	{
 		*(ptr + 5) = 25;
 		printf("The 5th element of ptr array is: %d\n", *(ptr + 5));
+		printf("The 4th element of ptr array is: %d\n", *(ptr + 4));
 	}
 }
 
