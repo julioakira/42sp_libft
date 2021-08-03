@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 23:48:32 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/07/23 01:03:18 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/03 02:17:45 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	size_t	idx;
 	char	*cpy_dst;
 	char	*cpy_src;
-	char	*tmp;
 
-	idx = 0;
-	cpy_dst = (unsigned char *)dst;
-	cpy_src = (unsigned char *)src;
-	tmp = malloc(len);
-	while (idx < len)
+	cpy_dst = (char *) dst;
+	cpy_src = (char *) src;
+	if (dst < src)
 	{
-		tmp[idx] = cpy_src[idx];
-		idx++;
+		return (ft_memcpy(cpy_dst, cpy_src, len));
 	}
-	idx = 0;
-	while (idx < len)
+	else if (dst > src)
 	{
-		cpy_dst[idx] = tmp[idx];
-		idx++;
+		idx = len;
+		while (idx >= 1)
+		{
+			cpy_dst[idx - 1] = cpy_src[idx - 1];
+			idx--;
+		}
 	}
 	return (dst);
 }
