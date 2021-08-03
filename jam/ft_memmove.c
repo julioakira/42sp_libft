@@ -22,7 +22,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-
+// Ref: https://student.cs.uwaterloo.ca/~cs350/common/os161-src-html/doxygen/html/memmove_8c_source.html
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	idx;

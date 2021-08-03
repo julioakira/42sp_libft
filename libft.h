@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 04:01:01 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/02 04:12:33 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/03 03:02:13 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 
+// Part 1
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
@@ -37,5 +38,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
+
+// Part 2
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
