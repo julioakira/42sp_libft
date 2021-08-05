@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 01:51:07 by akira             #+#    #+#             */
-/*   Updated: 2021/08/02 02:54:12 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/04 01:04:16 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void malloc_test(void)
 		printf("The 5th element of ptr array is: %d\n", *(ptr + 5));
 		printf("The 4th element of ptr array is: %d\n", *(ptr + 4));
 	}
+	free(ptr);
 }
 
 void calloc_test(void)
@@ -78,6 +79,7 @@ void calloc_test(void)
 		printf("The 5th element of the ptr array is: %d\n", *(ptr + 5));
 		printf("The 4th element of the ptr array is: %d\n", *(ptr + 4));
 	}
+	free(ptr);
 }
 
 void my_calloc_test(void)
@@ -90,6 +92,7 @@ void my_calloc_test(void)
 		printf("The 5th element of ptr array is: %d\n", *(ptr + 5));
 		printf("The 4th element of ptr array is: %d\n", *(ptr + 4));
 	}
+	free(ptr);
 }
 
 int main(void)

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 02:51:27 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/02 04:07:56 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/04 01:36:21 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+
+int	ft_check_spaces(const char *str);
 
 int	ft_isdigit(int c)
 {
@@ -20,14 +22,14 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_check_spaces(char c)
+int	ft_check_spaces(const char *str)
 {
-	if (c == ' '
-	|| c == '\f'
-	|| c == '\n'
-	|| c == '\r'
-	|| c == '\t'
-	|| c == '\v')
+	if (*str == ' '
+		|| *str == '\f'
+		|| *str == '\n'
+		|| *str == '\r'
+		|| *str == '\t'
+		|| *str == '\v')
 		return (1);
 	return (0);
 }
@@ -39,7 +41,7 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	sign = 1;
-	while (ft_check_spaces(*str))
+	while (ft_check_spaces(str))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
