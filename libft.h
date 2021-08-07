@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 04:01:01 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/03 03:02:13 by akira            ###   ########.fr       */
+/*   Updated: 2021/08/05 01:28:54 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 
 // Part 2
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

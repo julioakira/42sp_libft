@@ -1,60 +1,127 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 00:42:29 by akira             #+#    #+#             */
-/*   Updated: 2021/08/04 03:44:58 by jakira-p         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdio.h>
-#include <stdlib.h>
 #include "../libft.h"
+#include <stdio.h>
 
-static int	ft_char_at_pos(const char *str, char c)
+static	size_t	occ_count(char const *s, char c);
+static	void		splitter(char *s, char c, char **aptr);
+
+void *ft_memset(void *b, int c, size_t len)
 {
-	int	idx;
+	char *ptr;
+	size_t idx;
+
 	idx = 0;
-	while(str[idx])
+	ptr = b;
+	while (idx < len)
 	{
-		if (str[idx] == c)
-			return (idx);
+		ptr[idx] = (unsigned char)c;
 		idx++;
 	}
-	return (0);
+	return (b);
 }
 
-size_t	ft_strlen(const char *s)
+void	ft_bzero(void *s, size_t n)
 {
+	ft_memset(s, 0, n);
+}
+
+void *ft_calloc(size_t nmemb, size_t size)
+{
+	void *ptr;
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	ft_bzero(ptr, size);
+	return (ptr);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*result;
 	size_t	idx;
 
+	result = malloc(len + 1);
+	if (result == NULL)
+		return (NULL);
 	idx = 0;
-	while (s[idx] != '\0')
+	while (start < len)
+	{
+		result[idx] = s[start];
 		idx++;
-	return (idx);
+		start++;
+	}
+	result[idx] = '\0';
+	return result;
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
-	int		sep_position;
-	size_t	idx;
+	char	**ar_ptr;
+	size_t	i;
 
-	sep_position = ft_char_at_pos(s, c);
-	if (!sep_position)
-		return ()
+	ar_ptr = NULL;
+	if (s)
+	{
+		i = occ_count(s, c);
+		ar_ptr = (char **)ft_calloc(i + 1, sizeof (char *));
+		if (!ar_ptr)
+			return (NULL);
+		splitter((char *)s, c, ar_ptr);
+	}
+	return (ar_ptr);
+}
+
+size_t	occ_count(char const *s, char c)
+{
+	char	*pf;
+	size_t	i;
+
+	pf = (char *)s;
+	i = 0;
+	while (*pf)
+	{
+		if (*pf != c)
+		{
+			while (*pf != c && *pf)
+				pf++;
+			i++;
+		}
+		if (*pf)
+			pf++;
+	}
+	return (i);
+}
+
+void	splitter(char *s, char c, char **aptr)
+{
+	size_t	i;
+	size_t	n;
+
+	n = 0;
+	while (*s)
+	{
+		i = 0;
+		if (*s != c)
+		{
+			while (s[i] != c && s[i])
+			{
+				i++;
+			}
+			aptr[n++] = ft_substr(s, 0, i);
+			s += i - 1;
+		}
+		if (*s)
+			s++;
+	}
 }
 
 int main(void)
 {
-	char *str1 = "Hello, guys!";
-	char sep = ' ';
+	char *str1 = "Eu amo a Jaja";
+	char sep = 'a';
 	char **split_res = ft_split(str1, sep);
 	printf("Split s1: %s\n", split_res[0]);
 	printf("Split s2: %s\n", split_res[1]);
-	printf("Char at pos: %d\n", ft_char_at_pos(str1, sep));
+	printf("Split s3: %s\n", split_res[2]);
+	printf("Split s4: %s\n", split_res[3]);
 	return (0);
 }
