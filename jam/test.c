@@ -9,24 +9,24 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int i;
-	int p[3];
+	int idx;
+	int ptr[3];
 	char *ret;
 
-	i = 0;
-	p[2] = ft_strlen(s1);
-	while (is_in_char_set(set, s1[i]))
+	idx = 0;
+	ptr[2] = ft_strlen(s1);
+	while (is_in_char_set(set, s1[idx]))
 	{
-		i++;
+		idx++;
 	}
-	p[0] = i;
-	i = p[2] - 1;
-	while(is_in_char_set(set, s1[i]))
+	ptr[0] = idx;
+	idx = ptr[2] - 1;
+	while(is_in_char_set(set, s1[idx]))
 	{
-		i--;
+		idx--;
 	}
-	p[1] = i;
-	ret = ft_substr(s1, p[0], p[1] + 1);
+	ptr[1] = idx;
+	ret = ft_substr(s1, ptr[0], ptr[1] + 1);
 	return (ret);
 }
 
@@ -41,11 +41,11 @@ int	ft_strlen(char const *str)
 	return (i);
 }
 
-static int	is_in_char_set(char const *set, char a)
+static int	is_in_char_set(char const *set, char c)
 {
 	while (*set)
 	{
-		if (*set == a)
+		if (*set == c)
 			return (1);
 		set++;
 	}

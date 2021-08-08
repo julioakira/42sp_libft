@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 04:01:07 by akira             #+#    #+#             */
-/*   Updated: 2021/08/04 02:11:12 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/05 01:21:24 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/08 04:55:55 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// #1. The string to be trimmed.
-// #2. The reference set of characters to trim
+static int	is_in_char_set(char const *set, char a);
 
 static int	is_in_char_set(char const *set, char a)
 {
@@ -28,23 +27,23 @@ static int	is_in_char_set(char const *set, char a)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int i;
-	int p[3];
-	char *ret;
+	int		idx;
+	int		ptr[3];
+	char	*ret;
 
-	i = 0;
-	p[2] = ft_strlen(s1);
-	while (is_in_char_set(set, s1[i]))
+	idx = 0;
+	ptr[2] = ft_strlen(s1);
+	while (is_in_char_set(set, s1[idx]))
 	{
-		i++;
+		idx++;
 	}
-	p[0] = i;
-	i = p[2] - 1;
-	while(is_in_char_set(set, s1[i]))
+	ptr[0] = idx;
+	idx = ptr[2] - 1;
+	while (is_in_char_set(set, s1[idx]))
 	{
-		i--;
+		idx--;
 	}
-	p[1] = i;
-	ret = ft_substr(s1, p[0], p[1] + 1);
+	ptr[1] = idx;
+	ret = ft_substr(s1, ptr[0], ptr[1] + 1);
 	return (ret);
 }

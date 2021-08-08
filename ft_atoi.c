@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 02:49:48 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/04 01:34:44 by akira            ###   ########.fr       */
+/*   Updated: 2021/08/05 01:23:31 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_check_spaces(const char *str)
+static int	ft_check_spaces(char *str);
+
+static int	ft_check_spaces(char *str)
 {
 	if (*str == ' '
 		|| *str == '\f'
@@ -31,7 +33,7 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	sign = 1;
-	while (ft_check_spaces(str))
+	while (ft_check_spaces(*str))
 		str++;
 	if (*str == '-' || *str == '+')
 	{

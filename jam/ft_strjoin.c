@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 03:32:37 by akira             #+#    #+#             */
-/*   Updated: 2021/08/03 03:54:25 by akira            ###   ########.fr       */
+/*   Updated: 2021/08/08 04:44:12 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		idx++;
 		s_idx++;
 	}
-	result[idx] = '\0';
+	result[idx + 1] = '\0';
 	return (result);
 }
 

@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 03:00:55 by akira             #+#    #+#             */
-/*   Updated: 2021/08/03 03:49:01 by akira            ###   ########.fr       */
+/*   Created: 2021/08/05 01:19:05 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/05 01:19:23 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #1. The string from which to create the substring.
-// #2. The start index of the substring in the string ’s’.
-// #3. The maximum length of the substring.
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*result;
@@ -30,5 +28,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 	}
 	result[idx] = '\0';
-	return result;
+	return (result);
 }

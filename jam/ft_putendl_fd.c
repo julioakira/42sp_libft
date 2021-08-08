@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/05 01:20:19 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 04:45:03 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/07 02:17:09 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/07 02:20:07 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*result;
-	size_t	idx;
-	size_t	s_idx;
-
-	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	unsigned int	idx;
+	if (!s)
+		return;
 	idx = 0;
-	s_idx = 0;
-	if (result == NULL)
-		return (NULL);
-	while (s1[idx])
+	while (s[idx])
 	{
-		result[idx] = s1[idx];
+		write(fd, &s[idx], 1);
 		idx++;
 	}
-	while (s2[s_idx])
-	{
-		result[idx] = s2[s_idx];
-		idx++;
-		s_idx++;
-	}
-	result[idx + 1] = '\0';
-	return (result);
+	write(fd, "\n", 1);
+}
+
+int main(void)
+{
+	char *str = "Hello, world!";
+	ft_putendl_fd(str, 2);
+	return (0);
 }
