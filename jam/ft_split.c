@@ -1,9 +1,6 @@
 #include "../libft.h"
 #include <stdio.h>
 
-static	size_t	occ_count(char const *s, char c);
-static	void		splitter(char *s, char c, char **aptr);
-
 void *ft_memset(void *b, int c, size_t len)
 {
 	char *ptr;
@@ -53,75 +50,77 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return result;
 }
 
+static size_t	count_pieces(char *str, char sep);
+static void		split_string(char *str, char token, char **str_arr);
+
+static size_t	count_pieces(char *str, char token)
+{
+	char		*str_cpy;
+	size_t		counter;
+
+	str_cpy = (char *)str;
+	counter = 0;
+	while (*str_cpy)
+	{
+		if (*str_cpy != token)
+		{
+			while (*str_cpy != token && *str_cpy)
+				str_cpy++;
+			counter++;
+		}
+		if (*str_cpy)
+			str_cpy++;
+	}
+	return (counter);
+}
+
+static void	split_string(char *str, char token, char **str_arr)
+{
+	size_t	str_idx;
+	size_t	arr_idx;
+
+	arr_idx = 0;
+	while (*str)
+	{
+		str_idx = 0;
+		if (*str != token)
+		{
+			while (str[str_idx] != token && str[str_idx])
+			{
+				str_idx++;
+			}
+			str_arr[arr_idx++] = ft_substr(str, 0, str_idx);
+			str += str_idx - 1;
+		}
+		if (*str)
+			str++;
+	}
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char	**ar_ptr;
-	size_t	i;
+	char	*s_cpy;
+	char	**result;
+	size_t	idx;
 
-	ar_ptr = NULL;
+	result = NULL;
 	if (s)
 	{
-		i = occ_count(s, c);
-		ar_ptr = (char **)ft_calloc(i + 1, sizeof (char *));
-		if (!ar_ptr)
+		s_cpy = (char *) s;
+		idx = count_pieces(s_cpy, c);
+		result = (char **) ft_calloc(idx + 1, sizeof (char *));
+		if (!result)
 			return (NULL);
-		splitter((char *)s, c, ar_ptr);
+		split_string(s_cpy, c, result);
+		result[idx] = NULL;
 	}
-	return (ar_ptr);
+	return (result);
 }
 
-size_t	occ_count(char const *s, char c)
-{
-	char	*pf;
-	size_t	i;
-
-	pf = (char *)s;
-	i = 0;
-	while (*pf)
-	{
-		if (*pf != c)
-		{
-			while (*pf != c && *pf)
-				pf++;
-			i++;
-		}
-		if (*pf)
-			pf++;
-	}
-	return (i);
-}
-
-void	splitter(char *s, char c, char **aptr)
-{
-	size_t	i;
-	size_t	n;
-
-	n = 0;
-	while (*s)
-	{
-		i = 0;
-		if (*s != c)
-		{
-			while (s[i] != c && s[i])
-			{
-				i++;
-			}
-			aptr[n++] = ft_substr(s, 0, i);
-			s += i - 1;
-		}
-		if (*s)
-			s++;
-	}
-}
 
 int main(void)
 {
-	char *str1 = "Eu amo a Jaja";
-	char sep = 'a';
-	char **split_res = ft_split(str1, sep);
-	printf("Split s1: %s\n", split_res[0]);
-	printf("Split s2: %s\n", split_res[1]);
-	printf("Split s3: %s\n", split_res[2]);
-	printf("Split s4: %s\n", split_res[3]);
+	char **tab = ft_split("  tripouille  42  ", ' ');
+	printf("Split s1: %s\n", tab[2]);
 	return (0);
 }

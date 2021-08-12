@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 00:02:23 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/07 01:06:55 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/09 23:52:48 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	digit_counter(int n)
 
 	r = n;
 	counter = !n;
+	if (n == -2147483648)
+		return (11);
 	if (n < 0)
 	{
 		r *= (-1);
@@ -73,14 +75,11 @@ char	*ft_itoa(int n)
 	int		idx;
 
 	n_digits = digit_counter(n);
-	result = malloc(n_digits + 1);
+	result = calloc(n_digits + 1, 1);
+	if (!result)
+		return (NULL);
 	idx = 1;
-	if (n == -2147483648)
-	{
-		result = "-2147483648";
-		return (result);
-	}
-	while (idx <= n_digits)
+	while (idx < n_digits)
 	{
 		if (n < 0)
 		{
@@ -97,15 +96,7 @@ char	*ft_itoa(int n)
 
 int main(void)
 {
-	int n_int1 = 2147483647;
 	int n_int2 = -2147483648;
-	int n_int3 = 0;
-	int n_int4 = 10;
-	int n_int5 = -245;
-	printf("FT Itoa test 1: %s\n", ft_itoa(n_int1));
 	printf("FT Itoa test 2: %s\n", ft_itoa(n_int2));
-	printf("FT Itoa test 3: %s\n", ft_itoa(n_int3));
-	printf("FT Itoa test 4: %s\n", ft_itoa(n_int4));
-	printf("FT Itoa test 5: %s\n", ft_itoa(n_int5));
 	return (0);
 }

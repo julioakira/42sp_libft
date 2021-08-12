@@ -6,53 +6,75 @@
 /*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 01:47:52 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/05 02:48:49 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/09 23:29:11 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_char_at_pos(const char *str, char c);
+static size_t	count_pieces(char *str, char sep);
+static void		split_string(char *str, char token, char **str_arr);
 
-static int	ft_char_at_pos(const char *str, char c)
+static size_t	count_pieces(char *str, char token)
 {
-	int	idx;
+	char		*str_cpy;
+	size_t		counter;
 
-	idx = 0;
-	while (str[idx])
+	str_cpy = (char *)str;
+	counter = 0;
+	while (*str_cpy)
 	{
-		if (str[idx] == c)
-			return (idx);
-		idx++;
+		if (*str_cpy != token)
+		{
+			while (*str_cpy != token && *str_cpy)
+				str_cpy++;
+			counter++;
+		}
+		if (*str_cpy)
+			str_cpy++;
 	}
-	return (0);
+	return (counter);
 }
 
-// Return null if malloc fails
+static void	split_string(char *str, char token, char **str_arr)
+{
+	size_t	str_idx;
+	size_t	arr_idx;
+
+	arr_idx = 0;
+	while (*str)
+	{
+		str_idx = 0;
+		if (*str != token)
+		{
+			while (str[str_idx] != token && str[str_idx])
+			{
+				str_idx++;
+			}
+			str_arr[arr_idx++] = ft_substr(str, 0, str_idx);
+			str += str_idx - 1;
+		}
+		if (*str)
+			str++;
+	}
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
 	char	*s_cpy;
-	char	*s1;
+	char	**result;
 	size_t	idx;
 
-	s_cpy = (char *) s;
-	if (!ft_char_at_pos(s, c))
-		return (NULL);
-	idx = 0;
-	result = malloc(ft_strlen(s));
-	s1 = malloc(ft_char_at_pos(s, c));
-	if (result == NULL || s1 == NULL)
-		return (NULL);
-	while (s_cpy[idx])
+	result = NULL;
+	if (s)
 	{
-		s1[idx] = s_cpy[idx];
-		if (s_cpy[idx] == c)
-			break ;
-		idx++;
+		s_cpy = (char *) s;
+		idx = count_pieces(s_cpy, c);
+		result = (char **) ft_calloc(idx + 1, sizeof (char *));
+		if (!result)
+			return (NULL);
+		split_string(s_cpy, c, result);
+		result[idx] = NULL;
 	}
-	s1[idx + 1] = '\0';
-	result[0] = s1;
-	result[1] = &s_cpy[idx];
 	return (result);
 }

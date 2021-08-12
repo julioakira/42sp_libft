@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 04:48:06 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 05:01:41 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/09 23:55:59 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ char	*ft_itoa(int n)
 	int		idx;
 
 	n_digits = digit_counter(n);
-	result = malloc(n_digits + 1);
+	result = calloc(n_digits + 1, sizeof(char));
+	if (!result)
+		return (NULL);
 	idx = 1;
 	if (n == -2147483648)
 	{
@@ -88,6 +90,5 @@ char	*ft_itoa(int n)
 		result[idx - 1] = get_digit(n, n_digits - idx);
 		idx++;
 	}
-	result[n_digits + 1] = '\0';
 	return (result);
 }

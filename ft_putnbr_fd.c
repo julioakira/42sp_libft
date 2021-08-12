@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 04:52:31 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 04:59:29 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/09 00:08:24 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,7 @@ static void	get_digit(int num, int pos, int fd)
 
 static void	ft_min_int(int fd)
 {
-	write(fd, "-", 1);
-	write(fd, "2", 1);
-	write(fd, "1", 1);
-	write(fd, "4", 1);
-	write(fd, "7", 1);
-	write(fd, "4", 1);
-	write(fd, "8", 1);
-	write(fd, "3", 1);
-	write(fd, "6", 1);
-	write(fd, "4", 1);
-	write(fd, "8", 1);
+	write(fd, "-2147483648", 11);
 }
 
 void	ft_putnbr_fd(int n, int fd)
