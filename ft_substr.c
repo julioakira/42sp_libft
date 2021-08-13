@@ -6,7 +6,11 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 01:19:05 by jakira-p          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/08/13 02:01:43 by jakira-p         ###   ########.fr       */
+=======
+/*   Updated: 2021/08/09 22:08:38 by jakira-p         ###   ########.fr       */
+>>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +45,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		substr[idx] = s[start + idx];
 		idx++;
 	}
+<<<<<<< HEAD
+=======
+	substr[idx] = '\0';
+>>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
 	return (substr);
 }

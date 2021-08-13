@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 00:02:23 by jakira-p          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/08/13 01:19:16 by jakira-p         ###   ########.fr       */
+=======
+/*   Updated: 2021/08/09 23:52:48 by jakira-p         ###   ########.fr       */
+>>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +71,8 @@ static int	digit_counter(int n)
 
 	r = n;
 	counter = !n;
+	if (n == -2147483648)
+		return (11);
 	if (n < 0)
 	{
 		r *= (-1);
@@ -100,6 +106,7 @@ char	*ft_itoa(int n)
 	int				n_digits;
 
 	n_digits = digit_counter(n);
+<<<<<<< HEAD
 	result = (char *)ft_calloc(n_digits + 1, sizeof(char));
 	idx = 0;
 	if (!result)
@@ -111,6 +118,13 @@ char	*ft_itoa(int n)
 		return (result);
 	}
 	else if (n < 0)
+=======
+	result = calloc(n_digits + 1, 1);
+	if (!result)
+		return (NULL);
+	idx = 1;
+	while (idx < n_digits)
+>>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
 	{
 		nbr = -n;
 		result[idx++] = '-';
@@ -123,15 +137,7 @@ char	*ft_itoa(int n)
 
 int main(void)
 {
-	int n_int1 = 2147483647;
 	int n_int2 = -2147483648;
-	int n_int3 = 0;
-	int n_int4 = 10;
-	int n_int5 = -245;
-	printf("FT Itoa test 1: %s\n", ft_itoa(n_int1));
 	printf("FT Itoa test 2: %s\n", ft_itoa(n_int2));
-	printf("FT Itoa test 3: %s\n", ft_itoa(n_int3));
-	printf("FT Itoa test 4: %s\n", ft_itoa(n_int4));
-	printf("FT Itoa test 5: %s\n", ft_itoa(n_int5));
 	return (0);
 }
