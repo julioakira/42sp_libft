@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 04:49:04 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 05:00:51 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/13 02:12:57 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s || !f)
 		return (NULL);
-	s_cpy = malloc(ft_strlen(s) + 1);
+	s_cpy = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!s_cpy)
+		return (NULL);
 	idx = 0;
-	while (s)
+	while (s[idx])
 	{
-		s_cpy[idx] = f(idx, s_cpy[idx]);
+		s_cpy[idx] = f(idx, s[idx]);
 		idx++;
 	}
-	s_cpy[idx + 1] = '\0';
 	return (s_cpy);
 }

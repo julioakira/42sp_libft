@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 01:20:19 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 04:45:03 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:25:09 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		idx++;
 		s_idx++;
 	}
-	result[idx + 1] = '\0';
+	result[idx] = '\0';
 	return (result);
 }

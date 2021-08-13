@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 04:52:31 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 04:59:29 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/13 01:52:59 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,7 @@ static void	get_digit(int num, int pos, int fd)
 
 static void	ft_min_int(int fd)
 {
-	write(fd, "-", 1);
-	write(fd, "2", 1);
-	write(fd, "1", 1);
-	write(fd, "4", 1);
-	write(fd, "7", 1);
-	write(fd, "4", 1);
-	write(fd, "8", 1);
-	write(fd, "3", 1);
-	write(fd, "6", 1);
-	write(fd, "4", 1);
-	write(fd, "8", 1);
+	write(fd, "-2147483648", 11);
 }
 
 void	ft_putnbr_fd(int n, int fd)
@@ -79,7 +69,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_min_int(fd);
 	else if (n < 0)
 	{
-		write(1, "-", 1);
+		write(fd, "-", 1);
 		n = -n;
 		while (counter <= length)
 		{

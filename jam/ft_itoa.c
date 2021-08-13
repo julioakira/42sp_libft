@@ -6,23 +6,64 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 00:02:23 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/07 01:06:55 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/13 01:19:16 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-static	int digit_counter(int n);
-static	int power(int base, int exponent);
-static	char	get_digit(int num, int pos);
+static int digit_counter(int n);
 
-// Positives and negatives
+void *ft_memset(void *b, int c, size_t len)
+{
+	char *ptr;
+	size_t idx;
+
+	idx = 0;
+	ptr = b;
+	while (idx < len)
+	{
+		ptr[idx] = (unsigned char)c;
+		idx++;
+	}
+	return (b);
+}
+
+void ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void *ft_calloc(size_t nmemb, size_t size)
+{
+	void *ptr;
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	ft_bzero(ptr, size);
+	return (ptr);
+}
+
+size_t ft_strlen(const char *s)
+{
+	size_t idx;
+
+	idx = 0;
+	while (s[idx] != '\0')
+		idx++;
+	return (idx);
+}
+
+static int	digit_counter(int n);
+static char	*to_str(char *str, unsigned int n, int len);
+
 static int	digit_counter(int n)
 {
-	int r;
-	int counter;
+	int	r;
+	int	counter;
 
 	r = n;
 	counter = !n;
@@ -34,64 +75,49 @@ static int	digit_counter(int n)
 	if (n > 0 && n < 10)
 		return (1);
 	while (r)
-		{
-			r /= 10;
-			counter++;
-		}
+	{
+		r /= 10;
+		counter++;
+	}
 	return (counter);
 }
 
-static	int power(int base, int exponent)
+static char	*to_str(char *str, unsigned int n, int len)
 {
-	int result;
-
-	result = 1;
-	while (exponent > 0)
-		{
-			result = result * base;
-			exponent--;
-		}
-	return result;
+	while (n > 0)
+	{
+		str[len--] = '0' + (n % 10);
+		n = n / 10;
+	}
+	return (str);
 }
-
-// Reverses Position
-static char	get_digit(int num, int pos)
-{
-	int		result;
-
-	result = num / power(10, pos);
-	result = result % 10;
-	result = result + '0';
-    return (result);
-}
-
 
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		n_digits;
-	int		idx;
+	char			*result;
+	int				idx;
+	unsigned int	nbr;
+	int				n_digits;
 
 	n_digits = digit_counter(n);
-	result = malloc(n_digits + 1);
-	idx = 1;
-	if (n == -2147483648)
+	result = (char *)ft_calloc(n_digits + 1, sizeof(char));
+	idx = 0;
+	if (!result)
+		return (NULL);
+	result[n_digits--] = '\0';
+	if (n == 0)
 	{
-		result = "-2147483648";
+		result[idx++] = '0';
 		return (result);
 	}
-	while (idx <= n_digits)
+	else if (n < 0)
 	{
-		if (n < 0)
-		{
-			result[idx - 1] = '-';
-			n *= (-1);
-			idx++;
-		}
-		result[idx - 1] = get_digit(n, n_digits - idx);
-		idx++;
+		nbr = -n;
+		result[idx++] = '-';
 	}
-	result[n_digits + 1] = '\0';
+	else
+		nbr = n;
+	result = to_str(result, nbr, n_digits);
 	return (result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 04:49:51 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 05:00:38 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/13 01:49:28 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	if (!s || !f)
 		return ;
 	idx = 0;
-	f(idx, s);
+	while (s[idx])
+	{
+		f(idx, &s[idx]);
+		idx++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 03:32:37 by akira             #+#    #+#             */
-/*   Updated: 2021/08/08 04:44:12 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:25:11 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		idx++;
 		s_idx++;
 	}
-	result[idx + 1] = '\0';
+	result[idx] = '\0';
 	return (result);
 }
 
 
 int main(void)
 {
-	char *str1 = "Hello ";
-	char *str2 = "guys!";
-	printf("Result: %s\n", ft_strjoin(str1, str2));
+	char * s = ft_strjoin("tripouille", "42");
+	printf("Result: %s\n", s);
 	return (0);
 }

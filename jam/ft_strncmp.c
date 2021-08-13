@@ -6,11 +6,13 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 01:20:23 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/12 00:28:16 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:00:48 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
+#include <string.h>
+#include <stdio.h>
 
 // Compares up to n characters of s1 and s2 until
 // s1 != s2, n or a nul terminator is reached
@@ -29,4 +31,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		idx++;
 	}
 	return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
+}
+
+int main(void)
+{
+	char *str = "";
+	printf("Mine: %d\n", ft_strncmp(str, "", 1));
 }

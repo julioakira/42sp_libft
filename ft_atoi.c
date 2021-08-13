@@ -6,22 +6,22 @@
 /*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 02:49:48 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/05 01:23:31 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/09 00:20:51 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_check_spaces(char *str);
+static int	ft_check_spaces(char c);
 
-static int	ft_check_spaces(char *str)
+static int	ft_check_spaces(char c)
 {
-	if (*str == ' '
-		|| *str == '\f'
-		|| *str == '\n'
-		|| *str == '\r'
-		|| *str == '\t'
-		|| *str == '\v')
+	if (c == ' '
+		|| c == '\f'
+		|| c == '\n'
+		|| c == '\r'
+		|| c == '\t'
+		|| c == '\v')
 		return (1);
 	return (0);
 }

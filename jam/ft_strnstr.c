@@ -66,16 +66,20 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	idx;
 	size_t	n_len;
+	size_t	h_len;
 
 	n_len = ft_strlen(needle);
-	if (!len || !n_len)
+	h_len = ft_strlen(haystack);
+	if (!n_len)
 		return ((char *) haystack);
+	if (!h_len)
+		return (NULL);
 	idx = 0;
 	while (idx <= len - n_len)
 	{
 		if ((*haystack == *needle)
 			&& (!ft_strncmp(haystack, needle, n_len)))
-			return ((char *) haystack);
+			return ((char *)haystack);
 		haystack++;
 		idx++;
 	}
@@ -83,12 +87,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 }
 
 int main(void) {
-	char *needle = "string";
-	char *haystack = "hello i am a string with lala";
-    printf("my match: %s\n", ft_strnstr(haystack, needle, 18));
-    printf("original match: %s\n", strnstr(haystack, needle, 18));
-    printf("my match: %s\n", ft_strnstr(haystack, needle, 19));
-    printf("original match: %s\n", strnstr(haystack, needle, 19));
+	// char haystack[30] = "aaabcabcd";
+	// char needle[10] = "aabc";
+	char * empty = (char*)"";
+    printf("match: %s\n", ft_strnstr(empty, "coucou", -1));
     return 0;
 }
 

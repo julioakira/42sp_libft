@@ -6,17 +6,15 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 04:48:06 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/08 05:01:41 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/13 01:19:34 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	digit_counter(int n);
-static int	power(int base, int exponent);
-static char	get_digit(int num, int pos);
+static char	*to_str(char *str, unsigned int n, int len);
 
-// Positives and negatives
 static int	digit_counter(int n)
 {
 	int	r;
@@ -39,55 +37,41 @@ static int	digit_counter(int n)
 	return (counter);
 }
 
-static int	power(int base, int exponent)
+static char	*to_str(char *str, unsigned int n, int len)
 {
-	int	result;
-
-	result = 1;
-	while (exponent > 0)
+	while (n > 0)
 	{
-		result = result * base;
-		exponent--;
+		str[len--] = '0' + (n % 10);
+		n = n / 10;
 	}
-	return (result);
-}
-
-// Reverses Position
-static char	get_digit(int num, int pos)
-{
-	int	result;
-
-	result = num / power(10, pos);
-	result = result % 10;
-	result = result + '0';
-	return (result);
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		n_digits;
-	int		idx;
+	char			*result;
+	int				idx;
+	unsigned int	nbr;
+	int				n_digits;
 
 	n_digits = digit_counter(n);
-	result = malloc(n_digits + 1);
-	idx = 1;
-	if (n == -2147483648)
+	result = (char *)ft_calloc(n_digits + 1, sizeof(char));
+	idx = 0;
+	if (!result)
+		return (NULL);
+	result[n_digits--] = '\0';
+	if (n == 0)
 	{
-		result = "-2147483648";
+		result[idx++] = '0';
 		return (result);
 	}
-	while (idx <= n_digits)
+	else if (n < 0)
 	{
-		if (n < 0)
-		{
-			result[idx - 1] = '-';
-			n *= (-1);
-			idx++;
-		}
-		result[idx - 1] = get_digit(n, n_digits - idx);
-		idx++;
+		nbr = -n;
+		result[idx++] = '-';
 	}
-	result[n_digits + 1] = '\0';
+	else
+		nbr = n;
+	result = to_str(result, nbr, n_digits);
 	return (result);
 }

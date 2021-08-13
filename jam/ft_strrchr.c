@@ -5,15 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/20 01:38:56 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/12 00:21:39 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/11 22:47:57 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/12 00:20:42 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
+#include <stdio.h>
+#include <string.h>
 
-// Returns a pointer to the last occurence of c in the string s.
-// If c is not found in s, returns a null pointer.
+size_t	ft_strlen(const char *s)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (s[idx] != '\0')
+		idx++;
+	return (idx);
+}
+
+// Returns a pointer to the last occurence of c in the string s
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*s_cpy;
@@ -34,4 +45,16 @@ char	*ft_strrchr(const char *s, int c)
 		s_len--;
 	}
 	return (0);
+}
+
+int main(void)
+{
+	char s[] = "tripouille";
+	// char s2[] = "ltripouiel";
+	printf("test mine: %s\n", ft_strrchr(s, 't'));
+	printf("test orig: %s\n", strrchr(s, 't'));
+	printf("test mine: %s\n", ft_strrchr(s, 'l'));
+	printf("test orig: %s\n", strrchr(s, 'l'));
+	printf("test mine: %s\n", ft_strrchr(s, 0));
+	printf("test orig: %s\n", strrchr(s, 0));
 }
