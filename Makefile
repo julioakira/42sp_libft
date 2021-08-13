@@ -28,10 +28,7 @@ SRC = 		ft_atoi.c \
 			ft_split.c \
 			ft_itoa.c \
 			ft_strmapi.c \
-<<<<<<< HEAD
 			ft_striteri.c \
-=======
->>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
