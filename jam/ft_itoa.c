@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 00:02:23 by jakira-p          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/08/13 01:19:16 by jakira-p         ###   ########.fr       */
-=======
-/*   Updated: 2021/08/09 23:52:48 by jakira-p         ###   ########.fr       */
->>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
+/*   Updated: 2021/08/14 02:21:34 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +102,6 @@ char	*ft_itoa(int n)
 	int				n_digits;
 
 	n_digits = digit_counter(n);
-<<<<<<< HEAD
 	result = (char *)ft_calloc(n_digits + 1, sizeof(char));
 	idx = 0;
 	if (!result)
@@ -118,13 +113,6 @@ char	*ft_itoa(int n)
 		return (result);
 	}
 	else if (n < 0)
-=======
-	result = calloc(n_digits + 1, 1);
-	if (!result)
-		return (NULL);
-	idx = 1;
-	while (idx < n_digits)
->>>>>>> fb3111c765990fd530310e4013db46fe39b84b0e
 	{
 		nbr = -n;
 		result[idx++] = '-';

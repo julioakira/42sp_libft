@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 04:01:01 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/11 22:27:31 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/14 03:12:27 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
 // Pt. 1
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);

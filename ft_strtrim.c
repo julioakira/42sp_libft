@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 01:21:24 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/13 01:57:50 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/14 03:07:48 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,16 @@ static int	is_in_char_set(char const *set, char a)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		idx;
-	int		ptr[3];
-	char	*ret;
+	int		f_idx;
+	int		b_idx;
+	char	*result;
 
-	idx = 0;
-	ptr[2] = ft_strlen(s1);
-	while (is_in_char_set(set, s1[idx]))
-	{
-		idx++;
-	}
-	ptr[0] = idx;
-	idx = ptr[2] - 1;
-	while (is_in_char_set(set, s1[idx]))
-	{
-		idx--;
-	}
-	ptr[1] = idx;
-	ret = ft_substr(s1, ptr[0], ptr[1] + 1);
-	return (ret);
+	f_idx = 0;
+	b_idx = ft_strlen(s1) - 1;
+	while (is_in_char_set(set, s1[f_idx]))
+		f_idx++;
+	while (is_in_char_set(set, s1[b_idx]))
+		b_idx--;
+	result = ft_substr(s1, f_idx, b_idx - f_idx + 1);
+	return (result);
 }
