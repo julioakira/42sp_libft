@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/15 19:20:30 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/17 00:22:58 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/17 04:41:11 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/17 04:59:23 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include <stdio.h>
+#include "../libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list *ft_lstnew(void *content)
 {
-	t_list	*new_list;
+	t_list *new_list;
 
 	new_list = malloc(sizeof(t_list));
 	if (!new_list)
@@ -25,12 +25,20 @@ t_list	*ft_lstnew(void *content)
 	return (new_list);
 }
 
+void ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
+}
+
 int main(void)
 {
 	void	*content = (void *)500;
-	void	*content2 = (void *)10;
-	t_list	*lst = ft_lstnew(content);
-	t_list	*lst2 = ft_lstnew(content2);
-	printf("Content: %p\n", lst->content);
-	printf("Content2: %p\n", lst2->content);
+	t_list *lst = ft_lstnew(content);
+	printf("lst content before: %p\n", lst->content);
+	ft_lstdelone(lst, free);
+	// Should segfault or Undefined behaviour
+	printf("lst content after: %p\n", lst->content);
 }
