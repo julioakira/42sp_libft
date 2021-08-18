@@ -7,5 +7,8 @@ libft written for 42sp
 - [X] Part 1 - Libc functions
 - [X] Part 2 - Additional functions
 - [X] Part 3 - Test Pt.1 and Pt.2
-- [ ] Part 4 - Bonus Functions
-- [ ] Part 5 - Makefile
+- [X] Part 4 - Bonus Functions
+- [X] Part 5 - Test Bonus
+- [ ] Part 6 - Makefile
+- [ ] Part 7 - Documentation
+
