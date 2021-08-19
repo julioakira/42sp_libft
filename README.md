@@ -9,6 +9,6 @@ libft written for 42sp
 - [X] Part 3 - Test Pt.1 and Pt.2
 - [X] Part 4 - Bonus Functions
 - [X] Part 5 - Test Bonus
-- [ ] Part 6 - Makefile
+- [X] Part 6 - Makefile
 - [ ] Part 7 - Documentation
 
