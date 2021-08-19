@@ -6,16 +6,18 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 01:59:55 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/18 04:07:38 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/18 21:10:53 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*safe_lstnew(t_list *lst, void *(f)(void *),
-void (*del)(void *))
+static t_list	*c_apply_f(t_list *lst, void *(f)(void *), void (*del)(void *));
+
+static t_list	*c_apply_f(t_list *lst, void *(f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;
+
 	if (!lst || !f || !del)
 		return (NULL);
 	new_node = ft_lstnew(f(lst->content));
@@ -34,14 +36,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f || !del)
 		return (NULL);
-	new_node = safe_lstnew(lst, f, del);
+	new_node = c_apply_f(lst, f, del);
 	if (!new_node)
 		return (NULL);
 	new_lst = new_node;
 	lst = lst->next;
 	while (lst)
 	{
-		new_node = safe_lstnew(lst, f, del);
+		new_node = c_apply_f(lst, f, del);
 		if (!new_node)
 			break ;
 		lst = lst->next;
