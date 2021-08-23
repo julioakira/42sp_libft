@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 01:19:05 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/13 02:01:43 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/20 02:29:53 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	s_piece_len = ft_strlen(&s[start]);
 	smaller = get_smaller(len, s_piece_len);
 	substr = ft_calloc(smaller + 1, sizeof (char));
+	if (!substr)
+		return (NULL);
 	while (idx < len && s[start + idx])
 	{
 		substr[idx] = s[start + idx];

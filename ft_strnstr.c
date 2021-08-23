@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 03:48:40 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/12 01:13:21 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/08/21 05:58:54 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	if (!n_len)
 		return ((char *) haystack);
 	if (!h_len || !len)
+		return (NULL);
+	if (h_len < n_len)
 		return (NULL);
 	idx = 0;
 	while (idx <= len - n_len)

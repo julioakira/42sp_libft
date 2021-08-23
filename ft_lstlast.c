@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 02:17:54 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/21 05:58:14 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/16 03:45:45 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/18 01:16:02 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// Copies n bytes from src to dst. If dst & src overlap -> undef behaviour
-// Returns the original value of dst
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	idx;
-	char	*cpy_dst;
-	char	*cpy_src;
-
-	cpy_dst = (char *)dst;
-	cpy_src = (char *)src;
-	if (dst == src)
-		return (dst);
-	idx = 0;
-	while (idx < n)
+	if (!lst)
+		return (NULL);
+	while (lst->next)
 	{
-		cpy_dst[idx] = cpy_src[idx];
-		idx++;
+		lst = lst->next;
 	}
-	return (dst);
+	return (lst);
 }

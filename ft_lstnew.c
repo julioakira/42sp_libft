@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 02:17:54 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/08/21 05:58:14 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/15 19:20:30 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/16 05:39:15 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// Copies n bytes from src to dst. If dst & src overlap -> undef behaviour
-// Returns the original value of dst
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	idx;
-	char	*cpy_dst;
-	char	*cpy_src;
+	t_list	*new_list;
 
-	cpy_dst = (char *)dst;
-	cpy_src = (char *)src;
-	if (dst == src)
-		return (dst);
-	idx = 0;
-	while (idx < n)
-	{
-		cpy_dst[idx] = cpy_src[idx];
-		idx++;
-	}
-	return (dst);
+	new_list = malloc(sizeof(t_list));
+	if (!new_list)
+		return (NULL);
+	new_list->content = content;
+	new_list->next = NULL;
+	return (new_list);
 }
