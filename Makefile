@@ -6,7 +6,7 @@
 #    By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 05:29:35 by jakira-p          #+#    #+#              #
-#    Updated: 2021/08/19 19:23:28 by jakira-p         ###   ########.fr        #
+#    Updated: 2021/09/28 03:06:35 by jakira-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC = ft_atoi.c \
 				ft_strtrim.c \
 				ft_split.c \
 				ft_itoa.c \
+				ft_litoa.c \
 				ft_strmapi.c \
 				ft_striteri.c \
 				ft_putchar_fd.c \

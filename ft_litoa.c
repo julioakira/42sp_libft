@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_litoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 03:06:13 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 03:06:17 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/08 04:48:06 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/09/28 03:05:41 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	digit_counter(int n);
-static char	*to_str(char *str, unsigned int n, int len);
+static int	digit_counter(long n);
+static char	*to_str(char *str, long n, int len);
 
-static int	digit_counter(int n)
+static int	digit_counter(long n)
 {
-	int	r;
-	int	counter;
+	long	r;
+	int		counter;
 
 	r = n;
 	counter = !n;
@@ -37,7 +37,7 @@ static int	digit_counter(int n)
 	return (counter);
 }
 
-static char	*to_str(char *str, unsigned int n, int len)
+static char	*to_str(char *str, long n, int len)
 {
 	while (n > 0)
 	{
@@ -47,11 +47,11 @@ static char	*to_str(char *str, unsigned int n, int len)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_litoa(long n)
 {
 	char			*result;
 	int				idx;
-	unsigned int	nbr;
+	long			nbr;
 	int				n_digits;
 
 	n_digits = digit_counter(n);
